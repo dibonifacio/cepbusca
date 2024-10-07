@@ -1,0 +1,58 @@
+<%- include('../layouts/header') %>
+
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %> <% if (pageInfo.pagination.currentPage > 1) { %> - página <%= pageInfo.pagination.currentPage %><% } %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+							<% if (pageInfo.pagination.currentPage == 1) { %>
+							<h2>Qual o CEP de <%= pageInfo.state.name %>?</h2>
+							<p>O <strong>CEP de <%= pageInfo.state.state_code %> - <%= pageInfo.state.name %></strong> vai do CEP <%= pageInfo.state.zip_start %> ao <%= pageInfo.state.zip_end %></p>
+							<% } %>
+							<h2>CEPs das cidades de <%= pageInfo.state.name %></h2>
+							<p>Veja na lista abaixo o <strong>CEP das <%= pageInfo.state.city_qty %> cidades de <%= pageInfo.state.name %></strong>:</p>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Cidade</th><th>CEP Inicial</th><th>CEP Final</th><th>População</th><th>DDD</th></thead>
+								<tbody>
+								<% pageInfo.cities.forEach(function(city) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>
+									<a href="<%= city._url %>" itemprop="url"><span itemprop="addressLocality">CEP de <%= city.name %></span></a></td><td><span itemprop="postalCode"><%= city.zip_start %></span></td><td><span itemprop="postalCode"><%= city.zip_end %></span></td><td><%= city.population %></td><td><%= city.ddd %></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+							<%- include('../layouts/pagination') %>
+							<% if (pageInfo.pagination.currentPage == 1) { %>
+							<h2>Sobre <%= pageInfo.state.name %></h2>
+							<p>O estado <%= pageInfo.state.name %> tem um total de <%= pageInfo.state.city_qty %> cidades, que possuem um total de <%= pageInfo.state.area_qty %> bairros, <%= pageInfo.state.address_qty %> endereços/logradouros e <%= pageInfo.state.zip_qty %> CEPs diferentes. A capital do <%= pageInfo.state.name %> é <%= pageInfo.state.capital %>.</p>
+							<h3>CEP da capital de <%= pageInfo.state.name %></h3>
+							<p>A capital de <%= pageInfo.state.name %> é <%= pageInfo.capital.name %>, com uma população de <%= pageInfo.capital.population %> habitantes, ficando na <%= pageInfo.capital.population_ranking_state %>a posição entre as maiores cidades do estado e na posição <%= pageInfo.capital.population_ranking %>a do Brasil. <strong><%= pageInfo.capital.name %> possui CEPs entre <%= pageInfo.capital.zip_start %> e <%= pageInfo.capital.zip_end %></strong> e se você precisar fazer ligações para esta cidade, deve usar o DDD <%= pageInfo.capital.ddd %>. O município de <%= pageInfo.capital.name %> tem uma área total de <%= pageInfo.capital.area_size %> km2, sendo o <%= pageInfo.capital.area_ranking %>o maior município em área do Brasil e o <%= pageInfo.capital.area_ranking_state %>o maior do estado.</p>
+							<p>O <strong>código IBGE de <%= pageInfo.capital.name %> é <%= pageInfo.capital.id %></strong>, e este código é utilizado para identificar a cidade em vários bancos de dados do IGBE e do governo.</p>
+							<h3>CEP das maiores cidades de <%= pageInfo.state.name %></h3>
+							<p><%- pageInfo.zipBiggestCities %></p>
+							<h2>Qual o Código Postal de <%= pageInfo.state.name %>?</h2>
+							<p>O <strong>Código Postal de <%= pageInfo.state.state_code %> - <%= pageInfo.state.name %></strong> vai do CEP <%= pageInfo.state.zip_start %> ao <%= pageInfo.state.zip_end %></p>
+
+							<% } %>
+                        </div>
+                        <div class="col-3 col-12-small">
+
+							<h3>Maiores Cidades de <%= pageInfo.state.name %></h3>
+							<ol>
+							<% pageInfo.citiesPopulation.forEach(function(city) { %> 
+								<li itemscope itemtype="http://schema.org/PostalAddress">
+									<a href="<%= city._url %>" itemprop="url"><span itemprop="addressLocality">CEP de <%= city.name %></span></a><meta itemprop="addressRegion" content="<%= pageInfo.state.name %>"><meta itemprop="addressCountry" content="BR">
+								</li>
+							<% }); %>
+							</ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>

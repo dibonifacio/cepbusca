@@ -1,0 +1,61 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+
+							<p>Veja os CEPs dos <%= pageInfo.state.area_qty %> bairros do estado <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)</p>
+							<h2>Quais os CEPs dos Bairros de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)?</h2>
+							<p>Os <strong>CEPs dos bairros de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)</strong> vão do CEP <%= pageInfo.state.zip_start %> ao <%= pageInfo.state.zip_end %></p>
+							<h2>Quais os Códigos Postais dos Bairros de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)?</h2>
+							<p>O <strong>Código Postal dos bairros de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)</strong> vai do CEP <%= pageInfo.state.zip_start %> ao <%= pageInfo.state.zip_end %></p>
+
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Bairro</th><th>Cidade</th><th>CEP Inicial</th><th>CEP Final</th></thead>
+								<tbody>
+								<% pageInfo.areas.forEach(function(area) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>
+										<a href="<%= area._url %>"><%= area.name %></a></td><td><a href="<%= area._urlCity %>" itemprop="url"><span itemprop="addressLocality"><%= area.city_name %></span></a></td><td><span itemprop="postalCode"><%= area.zip_start %></span></td><td><span itemprop="postalCode"><%= area.zip_end %></span></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+
+							<%- include('../layouts/pagination') %>
+							
+							<h3>Sobre <%= pageInfo.state.name %></h3>
+							<p>O estado de <%= pageInfo.state.name %> tem um total de <%= pageInfo.state.city_qty %> cidades, que possuem um total de <%= pageInfo.state.area_qty %> bairros, <%= pageInfo.state.address_qty %> endereços/logradouros e <%= pageInfo.state.zip_qty %> CEPs diferentes. A capital é <%= pageInfo.state.capital %>.</p>
+
+							
+
+                        </div>
+                        <div class="col-3 col-12-small">
+
+							<h3>Mais Informações</h3>
+								<div class="table-wrapper"><table class="table table-bordered table-striped">
+									<tbody>
+										<tr><td><a href="<%= pageInfo.state._urlState %>">CEPs de <%= pageInfo.state.name %></a></td><td><%= pageInfo.state.city_qty %></td></tr>
+										<tr><td><a href="<%= pageInfo.state._urlStateAddress %>">Logradouros de <%= pageInfo.state.name %></a></td><td><%= pageInfo.state.address_qty %></td></tr>
+									</tbody>
+								</table></div>
+								<h4>Maiores Cidades de <%= pageInfo.state.name %></h4>
+								<ol>
+									<% pageInfo.citiesPopulation.forEach(function(city) { %> 
+										<li itemscope itemtype="http://schema.org/PostalAddress">
+											<a href="<%= city._url %>" itemprop="url"><span itemprop="addressLocality">CEP de <%= city.name %></span></a><meta itemprop="addressRegion" content="<%= pageInfo.state.name %>"><meta itemprop="addressCountry" content="BR">
+										</li>
+									<% }); %>
+								</ol>
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>

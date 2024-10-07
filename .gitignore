@@ -1,0 +1,50 @@
+# Node.js specific files and directories
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+log
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Debug files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.prod
+
+# Misc
+*.sublime-workspace
+*.swp
+.vscode/
+.idea/
+*.iml
+*.DS_Store
+*.vscode
+*.log
+
+# Build and generated files
+dist/
+build/
+coverage/
+.cache/
+out/
+
+# Pastas da aplicação que guardam arquivos gerados
+public/sitemap
+static

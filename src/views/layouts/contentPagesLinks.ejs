@@ -1,0 +1,6 @@
+<div class="h6 fw-bolder">Páginas</div>
+<ul>
+<% pageInfo.pages.forEach(function(page) { %> 
+    <li><a href="<%= page._url %>"><%= page.title %></a></li>
+<% }); %>
+</ul>

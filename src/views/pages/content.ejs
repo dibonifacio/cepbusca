@@ -1,0 +1,22 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.page.title %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+                            <div class="mb-4 mt-5">
+                                <%- pageInfo.page.content %>
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-small">
+                            <%- include('../layouts/contentPagesLinks') %>
+                        </div>
+                    </div>
+                </div>
+            </section>
+<%- include('../layouts/footer') %>

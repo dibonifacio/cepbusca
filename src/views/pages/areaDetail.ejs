@@ -1,0 +1,63 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %> <% if (pageInfo.pagination.currentPage > 1) { %> - página <%= pageInfo.pagination.currentPage %><% } %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+                            <% if (pageInfo.pagination.currentPage == 1) { %>
+
+							<p>O <strong>CEP do bairro <%= pageInfo.area.name %> em <%= pageInfo.area.city_name %> / <%= pageInfo.area.state_code %></strong> é de <%= pageInfo.area.zip_start %> até <%= pageInfo.area.zip_end %>. Este bairro tem um total de <%= pageInfo.area.address_qty %> logradouros.</p>
+							<h2>Qual o CEP de <%= pageInfo.area.name %> em <%= pageInfo.area.city_name %> / <%= pageInfo.area.state_code %>?</h2>
+							<p>O <strong>CEP de <%= pageInfo.area.name %></strong>, em <%= pageInfo.area.city_name %> / <%= pageInfo.area.state_code %> vai do <%= pageInfo.area.zip_start %> ao <%= pageInfo.area.zip_end %></p>
+							<h2>Qual o Código Postal de <%= pageInfo.area.name %> em <%= pageInfo.area.city_name %> / <%= pageInfo.area.state_code %>?</h2>
+							<p>O <strong>Código Postal de <%= pageInfo.area.name %></strong>, na cidade de <%= pageInfo.area.city_name %> / <%= pageInfo.area.state_code %> vai do <%= pageInfo.area.zip_start %> ao <%= pageInfo.area.zip_end %></p>
+							<% } %>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Logradouro</th><th>CEP</th></thead>
+								<tbody>
+								<% pageInfo.address.forEach(function(addr) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>
+										<a href="<%= addr._url %>" itemprop="url"><span itemprop="streetAddress"><%= addr.name %></span></a></td><td><a href="<%= addr._url_zip %>" itemprop="url"><span itemprop="postalCode"><%= addr.zip %></span></a></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+
+							<%- include('../layouts/pagination') %>
+                            <% if (pageInfo.pagination.currentPage == 1) { %>
+
+							<h2>Sobre o bairro <%= pageInfo.area.name %> em <%= pageInfo.area.city_name %></h2>
+							<p><%- pageInfo.contentArea %></p>
+							<h2>CEP dos Bairros próximos à <%= pageInfo.area.name %></h2>
+							<p><%- pageInfo.contentNearArea %></p>
+							<h2>CEP das ruas do bairro <%= pageInfo.area.name %></h2>
+							<p><%- pageInfo.contentAddress %></p>
+							<h2>DDD do bairro <%= pageInfo.area.name %> em <%= pageInfo.area.city_name %></h2>
+							<p>O DDD do bairro <%= pageInfo.area.name %> é o mesmo DDD da cidade <%= pageInfo.area.city_name %>, que é o DDD <%= pageInfo.city.ddd %>. Para ligar para qualquer telefone de <%= pageInfo.area.name %> ou em qualquer outro dos bairros de <%= pageInfo.area.city_name %>, você precisa usar o DDD <%= pageInfo.city.ddd %></p>
+							<% } %>
+
+                        </div>
+                        <div class="col-3 col-12-small">
+							<h3>Bairros Próximos</h3>
+							<ul>
+								<% pageInfo.areaNear.forEach(function(area) { %> 
+									<li><a href="<%= area._url %>">CEP de <%= area.name %></a></li>
+								<% }); %>
+							</ul>
+							<h3>Veja Também</h3>
+							<ul>
+								<li><a href="<%= pageInfo.area._url_city %>">CEP de <%= pageInfo.area.city_name %> / <%= pageInfo.area.state_code %></a></li>
+								<li><a href="<%= pageInfo.area._url_state %>">CEP de <%= pageInfo.area.state_code %> - <%= pageInfo.area.state_name %></a></li>
+							</ul>
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>

@@ -1,0 +1,33 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+							<%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Bairro</th><th>Cidade</th><th>CEP Inicial</th><th>CEP Final</th></thead>
+								<tbody>
+								<% pageInfo.areas.forEach(function(area) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>
+										<a href="<%= area._url %>"><%= area.name %></a></td><td><a href="<%= area._url_city %>" itemprop="url"><span itemprop="addressLocality"><%= area.city_name %> / <%= area.state_code %></span></a></td><td><span itemprop="postalCode"><%= area.zip_start %></span></td><td><span itemprop="postalCode"><%= area.zip_end %></span></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+
+                        </div>
+                        <div class="col-3 col-12-small">
+                            <div class="h6 fw-bolder">Categorias</div>
+
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+<%- include('../layouts/footer') %>

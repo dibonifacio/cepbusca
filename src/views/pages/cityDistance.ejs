@@ -1,0 +1,142 @@
+<%- include('../layouts/header') %>
+<section class="py-5" id="features">
+	<div class="container-fluid px-5 my-5">
+
+						<div class="row gx-5">
+							<div class="col-12 col-12-small"><%- include('../layouts/breadcrumb') %></div>
+						</div>
+						<div class="row gx-5">
+							<div class="col-12 col-12-small">
+
+								<p>A <strong>distância entre <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %></strong> é de <%= pageInfo.distanceMi %> kilômetros em linha reta</p>
+
+								<h2>Distancia entre <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %></h2>
+
+								<table class="table table-bordered">
+									<tbody>
+										<tr><td>Origem</td><td>
+											<strong>De <%= pageInfo.cityFrom.name %> / <%= pageInfo.cityFrom.state_code %></strong>
+											<br>Estado: <%= pageInfo.cityFrom.state_name %>
+											<br>Latitude: <%= pageInfo.cityFrom.latitude %> (<%= pageInfo.cityFrom.latitudeDms %>)
+											<br>Longitude: <%= pageInfo.cityFrom.longitude %> (<%= pageInfo.cityFrom.longitudeDms %>)
+											<br>Hora local: <%= pageInfo.cityFrom.currentTime %> : (<%= pageInfo.cityFrom.time_zone %>)
+										</td></tr>
+										<tr><td></td><td>
+											<strong>Distância: <%= pageInfo.distanceMi %> Km</strong>
+										</td></tr>
+										<tr><td>Destino</td><td>
+											<strong>Para: <%= pageInfo.cityTo.name %> / <%= pageInfo.cityFrom.state_code %></strong>
+											<br>Estado: <%= pageInfo.cityTo.state_name %>
+											<br>Latitude: <%= pageInfo.cityTo.latitude %> (<%= pageInfo.cityTo.latitudeDms %>)
+											<br>Longitude: <%= pageInfo.cityTo.longitude %> (<%= pageInfo.cityTo.longitudeDms %>)
+											<br>Hora local: <%= pageInfo.cityTo.currentTime %> : (<%= pageInfo.cityTo.time_zone %>)
+										</td></tr>
+									</tbody>
+								</table>
+																
+								<h2>Qual é a distância em milhas entre as cidades de <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %>?</h2>
+								
+								<p>A <strong>distância de <%= pageInfo.cityFrom.name %> para <%= pageInfo.cityTo.name %> em milhas</strong> em linha reta é de <%= pageInfo.distanceMi %> milhas. </p>
+								
+								<h2>Sobre <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %></h2>
+								
+								<p><%- pageInfo.aboutCities %></p>
+								
+								<h2>Comparação entre <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %></h2>
+								
+								<table class="table table-bordered">
+									<thead><tr><th></th><th><%= pageInfo.cityFrom.name %> / <%= pageInfo.cityFrom.state_code %></th><th><%= pageInfo.cityTo.name %> / <%= pageInfo.cityTo.state_code %></th></thead>
+									<tbody>
+										<tr><td>Estado</td><td><%= pageInfo.cityFrom.state_name %></td><td><%= pageInfo.cityTo.state_name %></td></tr>
+										<tr><td>É capital?</td><td><%= pageInfo.cityFrom.is_capital %></td><td><%= pageInfo.cityTo.is_capital %></td></tr>
+										<tr><td>Fuso</td><td><%= pageInfo.cityFrom.time_zone %></td><td><%= pageInfo.cityTo.time_zone %></td></tr>
+										<tr><td>DDD</td><td>DDD <%= pageInfo.cityFrom.ddd %></td><td>DDD <%= pageInfo.cityTo.ddd %></td></tr>
+										<tr><td>Faixa de CEP</td><td><%= pageInfo.cityFrom.zip_start %> a <%= pageInfo.cityFrom.zip_end %></td><td><%= pageInfo.cityTo.zip_start %> a <%= pageInfo.cityTo.zip_end %></td></tr>
+										<tr><td>Qtd de CEPs</td><td><%= pageInfo.cityFrom.zip_qty %></td><td><%= pageInfo.cityTo.zip_qty %></td></tr>
+										<tr><td>Qtd de Bairros</td><td><%= pageInfo.cityFrom.area_qty %></td><td><%= pageInfo.cityTo.area_qty %></td></tr>
+										<tr><td>Qtd de Logradouros</td><td><%= pageInfo.cityFrom.address_qty %></td><td><%= pageInfo.cityTo.address_qty %></td></tr>
+										<tr><td>Habitantes</td><td><%= pageInfo.cityFrom.population %></td><td><%= pageInfo.cityTo.population %></td></tr>
+										<tr><td>Ranking Habitantes no Brasil</td><td><%= pageInfo.cityFrom.population_ranking %>ª</td><td><%= pageInfo.cityTo.population_ranking %>ª</td></tr>
+										<tr><td>Ranking Habitantes no Estado</td><td><%= pageInfo.cityFrom.population_ranking_state %>ª</td><td><%= pageInfo.cityTo.population_ranking_state %>ª</td></tr>
+										<tr><td>Área</td><td><%= pageInfo.cityFrom.area %></td><td><%= pageInfo.cityTo.area %></td></tr>
+										<tr><td>Ranking Área no Brasil</td><td><%= pageInfo.cityFrom.area_ranking %>ª</td><td><%= pageInfo.cityTo.area_ranking %>ª</td></tr>
+										<tr><td>Ranking Área no Estado</td><td><%= pageInfo.cityFrom.area_ranking_state %>ª</td><td><%= pageInfo.cityTo.area_ranking_state %>ª</td></tr>
+										<tr><td>IDH</td><td><%= pageInfo.cityFrom.idh %></td><td><%= pageInfo.cityTo.idh %></td></tr>
+										<tr><td>Ranking IDH no Brasil</td><td><%= pageInfo.cityFrom.idh_ranking %>ª</td><td><%= pageInfo.cityTo.idh_ranking %>ª</td></tr>
+										<tr><td>Ranking IDH no Estado</td><td><%= pageInfo.cityFrom.idh_ranking_state %>ª</td><td><%= pageInfo.cityTo.idh_ranking_state %>ª</td></tr>
+										<tr><td>Código IBGE</td><td><%= pageInfo.cityFrom.ibge %></td><td><%= pageInfo.cityTo.ibge %></td></tr>
+										<tr><td>Prefeito</td><td><%= pageInfo.cityFrom.mayor %></td><td><%= pageInfo.cityTo.mayor %></td></tr>
+										<tr><td>Gentílico</td><td><%= pageInfo.cityFrom.demonym %></td><td><%= pageInfo.cityTo.demonym %></td></tr>
+									</tbody>
+								</table>
+								
+								<h2>Distância de <%= pageInfo.cityFrom.name %> para as 10 Capitais mais próximas</h2>
+
+								<ul>
+									<% pageInfo.cityFromCapital.forEach(function(city) { %> 
+										<li><a href="<%= city._url %>">Distância <%= pageInfo.cityFrom.name %> a <%= city.name %> (<%= city.distance %> Km)</a></li>
+									<% }); %>
+								</ul>
+
+								<h2>Distância de <%= pageInfo.cityTo.name %> para as 10 Capitais mais próximas</h2>
+								
+								<ul>
+									<% pageInfo.cityToCapital.forEach(function(city) { %> 
+										<li><a href="<%= city._url %>">Distância <%= pageInfo.cityTo.name %> a <%= city.name %> (<%= city.distance %> Km)</a></li>
+									<% }); %>
+								</ul>
+
+								<h2>Distância de <%= pageInfo.cityFrom.name %> até as 10 cidades mais próximas</h2>
+
+								<ul>
+									<% pageInfo.cityFromNear.forEach(function(city) { %> 
+										<li><a href="<%= city._url %>">Distância <%= pageInfo.cityFrom.name %> a <%= city.name %> (<%= city.distance %> Km)</a></li>
+									<% }); %>
+								</ul>
+
+								<h2>Distância de <%= pageInfo.cityTo.name %> até as 10 cidades mais próximas</h2>
+
+								<ul>
+									<% pageInfo.cityToNear.forEach(function(city) { %> 
+										<li><a href="<%= city._url %>">Distância <%= pageInfo.cityTo.name %> a <%= city.name %> (<%= city.distance %> Km)</a></li>
+									<% }); %>
+								</ul>
+
+								<h2>Outras informações de <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %></h2>
+
+								<p>Fora as informações de <strong>distância de <%= pageInfo.cityFrom.name %> para <%= pageInfo.cityTo.name %></strong>, veja também estas informações adicionais das cidades de <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %> sobre CEP e DDD</p>
+								
+								<h3>Qual o CEP de <%= pageInfo.cityFrom.name %> / <%= pageInfo.cityFrom.state_code %>?</h3>
+
+								<p>O <a href="<%= pageInfo.cityFrom._url_cepsdobrasil_city %>">CEP de <%= pageInfo.cityFrom.name %> / <%= pageInfo.cityTo.state_code %></a> fica na faixa de <%= pageInfo.cityFrom.zip_start %> a <%= pageInfo.cityFrom.zip_end %>, sendo que a cidade tem um total de <%= pageInfo.cityFrom.zip_qty %> CEPs cadastrados</p>
+								<p>Clique aqui para encontrar o CEP correto para um endereço em <%= pageInfo.cityFrom.name %> / <%= pageInfo.cityFrom.state_code %></p>
+								
+								<h3>Qual o CEP de <%= pageInfo.cityTo.name %> / <%= pageInfo.cityTo.state_code %>?</h3>
+
+								<p>O <a href="<%= pageInfo.cityTo._url_cepsdobrasil_city %>">CEP de <%= pageInfo.cityTo.name %> / <%= pageInfo.cityTo.state_code %></a> fica na faixa de <%= pageInfo.cityTo.zip_start %> a <%= pageInfo.cityTo.zip_end %>, sendo que a cidade tem um total de <%= pageInfo.cityTo.zip_qty %> CEPs cadastrados</p>
+								<p>Clique aqui para encontrar o CEP correto para um endereço em <%= pageInfo.cityTo.name %> / <%= pageInfo.cityTo.state_code %></p>
+								
+								<h3>Qual o DDD de <%= pageInfo.cityFrom.name %> / <%= pageInfo.cityFrom.state_code %>?</h3>
+
+								<p>O <a href="<%= pageInfo.cityFrom._url_dddsdobrasil_city %>">DDD de <%= pageInfo.cityFrom.name %> / <%= pageInfo.cityFrom.state_code %></a> é o <a href="<%= pageInfo.cityFrom._url_dddsdobrasil_ddd %>">DDD <%= pageInfo.cityFrom.ddd %></a></p>
+								
+								<p>Para ligar para <%= pageInfo.cityFrom.name %>, você vai precisar usar o código da operadora de sua preferência, seguido do DDD de <%= pageInfo.cityFrom.ddd %> e do número de telefone</p>
+								
+								<ul><li>0 + Código da Operadora + <%=pageInfo.cityFrom.ddd%> + número de telefone</li></ul>
+								
+								<h3>Qual o DDD de <%= pageInfo.cityTo.name %> / <%= pageInfo.cityTo.state_code %>?</h3>
+
+								<p>O <a href="<%= pageInfo.cityTo._url_dddsdobrasil_city %>">DDD de <%= pageInfo.cityTo.name %> / <%= pageInfo.cityTo.state_code %></a> é o <a href="<%= pageInfo.cityTo._url_dddsdobrasil_ddd %>">DDD <%= pageInfo.cityTo.ddd %></a></p>
+								
+								<p>Para ligar para <%= pageInfo.cityTo.name %>, você vai precisar usar o código da operadora de sua preferência, seguido do DDD de <%= pageInfo.cityTo.ddd %> e do número de telefone</p>
+								
+								<ul><li>0 + Código da Operadora + <%=pageInfo.cityTo.ddd%> + número de telefone</li></ul>							
+								
+								<h3>Como é feito o cálculo da distância entre as cidades de <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %>?</h3>
+								O cálculo da <strong>distância entre <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %></strong>, é feito através da Fórmula Harvesiana. Para o cálculo, a primeira coisa é descobrir as coordenadas geográficas de onde estão cada cidade, que são suas coordenadas de Latitude e Longitude. Com estas informações em mãos, tendo a latitude e longitude de <%= pageInfo.cityFrom.name %> e <%= pageInfo.cityTo.name %>, podemos então calcular a distância entre elas utilizando a Fórmula Harvesiana. A distância entre 2 pontos é uma linha reta num espaço plano, porém estamos sobre a superfície do planeta Terra, que é curva, então esta fórmula é feita levando em conta a curvatura da Terra</p>
+
+							</div>
+                        </div>		
+
+            </section>
+<%- include('../layouts/footer') %>

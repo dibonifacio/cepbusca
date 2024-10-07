@@ -1,0 +1,68 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+
+							<p>Veja o <strong>CEP de <%= pageInfo.address.name %></strong>, no bairro <%= pageInfo.address.area_name %> em <%= pageInfo.address.city_name %> (<%= pageInfo.address.state_code %>)</p>
+
+							<h2>Qual o CEP de <%= pageInfo.address.name %>, <%= pageInfo.address.city_name %> / <%= pageInfo.address.state_code %>?</h2>
+							<p>O <strong>CEP de <%= pageInfo.address.name %></strong> é <%= pageInfo.address.zip %>
+							<% if (pageInfo.zips.length > 1) { %>, porém este logradouro tem mais <%= pageInfo.zips.length %> CEPs <% } %>
+
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>CEP</th><th>Logradouro</th><th>Bairro</th><th>Cidade</th></thead>
+								<tbody>
+								<% pageInfo.zips.forEach(function(zip) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>
+										<a href="<%= zip._url %>" itemprop="url"><span itemprop="postalCode"><%= zip.zip %></span></a></td><td><span itemprop="streetAddress"><%= zip.address %></span></td><td><a href="<%= zip._url_area %>"><%= zip.area_name %></a></td><td><a href="<%= zip._url_city %>" itemprop="url"><span itemprop="addressLocality"><%= zip.city_name %> / <%= zip.state %></span></a></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+							<h2>Sobre o CEP de <%= pageInfo.address.name %> </h2>
+							<p><%- pageInfo.contentAddress %></p>
+							<p><%= pageInfo.address.name %> fica no bairro <%= pageInfo.address.area_name %>, que está na cidade de <%= pageInfo.address.city_name %>, no estado de <%= pageInfo.address.state_name %>. Esta cidade tem o código IBGE <%= pageInfo.city.id %>. É uma cidade com uma área total de <%= pageInfo.city.area_size %> km2 e com uma população de <%= pageInfo.city.population %> habitantes.</p>
+							<h2>Detalhamento do logradouro  <%= pageInfo.address.name %></h2>
+							<p>Veja abaixo um resumo de informações geográficas de <strong><%= pageInfo.address.name %></strong></p>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								
+								<tbody>
+									<tr><td>CEP</td><td><%= pageInfo.address.zip %></a></td></tr>
+									<tr><td>Tipo de Logradouro</td><td><%= pageInfo.address.type %></a></td></tr>
+									<tr><td>Logradouro (detalhe)</td><td><%= pageInfo.address.name %></a></td></tr>
+									<tr><td>Bairro</td><td><a href="<%= pageInfo.address._url_area %>"><%= pageInfo.address.area_name %></a></td></tr>
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>Cidade</td><td><a href="<%= pageInfo.address._url_city %>" itemprop="url"><span itemprop="addressLocality"><%= pageInfo.address.city_name %> / <%= pageInfo.address.state_code %></span></a></td></tr>
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>Estado</td><td><a href="<%= pageInfo.address._url_state %>" itemprop="url"><%= pageInfo.address.state_name %> (<%= pageInfo.address.state_code %>)</a></td></tr>
+									<tr><td>Latitude</td><td><%= pageInfo.address.latitude %></a></td></tr>
+									<tr><td>Longitude</td><td><%= pageInfo.address.longitude %></a></td></tr>
+								</tbody>
+							</table></div>
+
+							<h2>Qual o Código Postal de <%= pageInfo.address.name %>, <%= pageInfo.address.city_name %> / <%= pageInfo.address.state_code %>?</h2>
+							<p>O <strong>Código Postal de <%= pageInfo.address.name %></strong> é <%= pageInfo.address.zip %>
+							<% if (pageInfo.zips.length > 1) { %>, porém este logradouro tem mais <%= pageInfo.zips.length %> Códigos Postais <% } %></p>
+							<h2>Qual o DDD de <%= pageInfo.address.name %>, <%= pageInfo.address.city_name %> / <%= pageInfo.address.state_code %>?</h2>
+							<p>O DDD de <%= pageInfo.address.name %> é o <%= pageInfo.city.ddd %>, que é o mesmo DDD <%= pageInfo.city.ddd %> de toda cidade <%= pageInfo.address.city_name %>. Desta forma, para fazer alguma ligação para qualquer número de telefone registrado na rua <%= pageInfo.address.name %>, você deve discar 0 + código da operadora + <%= pageInfo.city.ddd %> + número de telefone, tanto para fazer uma ligação para celular quanto para ligar para um número fixo.</p>
+
+                        </div>
+                        <div class="col-3 col-12-small">
+							<h3>Veja Também</h3>
+							<ul>
+								<li><a href="<%= pageInfo.address._url_area %>">CEP de <%= pageInfo.address.area_name %>, <%= pageInfo.address.city_name %></a></li>
+								<li><a href="<%= pageInfo.address._url_city %>">CEP de <%= pageInfo.address.city_name %> / <%= pageInfo.address.state_code %></a></li>
+								<li><a href="<%= pageInfo.address._url_state %>">CEP de <%= pageInfo.address.state_code %> - <%= pageInfo.address.state_name %></a></li>
+							</ul>
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>

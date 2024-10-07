@@ -1,0 +1,38 @@
+<%- include('../layouts/header') %>
+            <!-- Header-->
+            <header class="bg-dark py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                <h1 class="display-5 fw-bolder text-white mb-2"><%= pageInfo.pageTitle %></h1>
+                                <p class="lead fw-normal text-white-50 mb-4">O site que tem todos os CEPs de todas as cidades, bairros e ruas do Brasil</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <h2>CEP das 50 maiores cidades do Brasil</h2>
+							<p>Veja na lista abaixo o <strong>CEP das 50 maiores cidades</strong> do Brasil:</p>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Cidade</th><th>Estado</th><th>CEP Inicial</th><th>CEP Final</th><th>População</th><th>DDD</th></thead>
+								<tbody>
+								<% pageInfo.cities.forEach(function(city) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>
+									<a href="<%= city._url %>" itemprop="url"><span itemprop="addressLocality">CEP de <%= city.name %></span></a></td><td><a href="<%= city._url_state %>"><%= city.state_name %></a></td><td><span itemprop="postalCode"><%= city.zip_start %></span></td><td><span itemprop="postalCode"><%= city.zip_end %></span></td><td><%= city.population %></td><td><%= city.ddd %></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+                        </div>	
+                    </div>
+                </div>
+            </section>
+
+            
+<%- include('../layouts/footer') %>

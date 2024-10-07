@@ -1,0 +1,47 @@
+<%- include('../layouts/header') %>
+					<div id="main">
+						<div class="row">
+							<div class="col-12 col-12-small"><%- include('../layouts/breadcrumb') %>
+							<p>Veja os <%= pageInfo.state.zip_qty %> CEPs do estado <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-9 col-12-small">
+								<%- include('../layouts/upperContent') %>
+								<div class="table-wrapper"><table class="alt">
+									<thead><tr><th>CEP</th><th>Logradouro</th><th>Bairro</th><th>Cidade</th></thead>
+									<tbody>
+									<% pageInfo.zips.forEach(function(zip) { %> 
+										<tr><td><a href="<%= zip._url %>"><%= zip.zip %></a></td><td><a href="<%= zip._url_address %>"><%= zip.address %></a></td><td><a href="<%= zip._url_area %>"><%= zip.area_name %></a></td><td><a href="<%= zip._url_city %>"><%= zip.city_name %> / <%= zip.state %></a></td></tr>
+									<% }); %>
+									</tbody>
+								</table></div>
+
+								<%- include('../layouts/pagination') %>
+								
+								<h2>Quais os CEPs dos Bairros de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)?</h2>
+								<p>Os CEPs de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>) vão do CEP <%= pageInfo.state.zip_start %> ao <%= pageInfo.state.zip_end %></p>
+								<h2>Quais os Códigos Postais dos Bairros de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>)?</h2>
+								<p>O Código Postal de <%= pageInfo.state.name %> (<%= pageInfo.state.state_code %>) vai do CEP <%= pageInfo.state.zip_start %> ao <%= pageInfo.state.zip_end %></p>
+								<h3>Sobre o <%= pageInfo.state.name %></h3>
+								<p>O estado de <%= pageInfo.state.name %> tem um total de <%= pageInfo.state.city_qty %> cidades, que possuem um total de <%= pageInfo.state.area_qty %> bairros, <%= pageInfo.state.address_qty %> endereços/logradouros e <%= pageInfo.state.zip_qty %> CEPs diferentes.</p>
+								<p>A capital é <%= pageInfo.state.capital %>.</p>
+								<p><%- include('../layouts/bottomContent') %></p>
+								
+							</div>
+							<div class="col-3 col-12-small">
+								<h3>Mais Informações</h3>
+								<%- include('../layouts/sidebarContent') %>
+								<div class="table-wrapper"><table class="alt">
+									<tbody>
+										<tr><td><a href="<%= pageInfo.state._urlState %>">Cidades de <%= pageInfo.state.name %></a></td><td><%= pageInfo.state.city_qty %></td></tr>
+										<tr><td><a href="<%= pageInfo.state._urlStateArea %>">Bairros de <%= pageInfo.state.name %></a></td><td><%= pageInfo.state.area_qty %></td></tr>
+										<tr><td><a href="<%= pageInfo.state._urlStateAddress %>">Logradouros de <%= pageInfo.state.name %></a></td><td><%= pageInfo.state.address_qty %></td></tr>
+										<tr><td><a href="<%= pageInfo.state._urlStateZip %>">CEPs de <%= pageInfo.state.name %></a></td><td><%= pageInfo.state.zip_qty %></td></tr>
+									</tbody>
+								</table></div>
+								<h4>Maiores Cidades de <%= pageInfo.state.name %></h4>
+
+							</div>
+						</div>
+<%- include('../layouts/footer') %>

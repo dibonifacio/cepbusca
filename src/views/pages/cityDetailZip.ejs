@@ -1,0 +1,45 @@
+<%- include('../layouts/header') %>
+					<div id="main">
+						<div class="row">
+							<div class="col-12 col-12-small"><%- include('../layouts/breadcrumb') %></div>
+						</div>
+						<div class="row">
+							<div class="col-9 col-12-small">
+								<%- include('../layouts/upperContent') %>
+
+								<div class="table-wrapper"><table class="alt">
+									<thead><tr><th>Bairro</th><th>CEP Inicial</th><th>CEP Final</th></thead>
+									<tbody>
+									<% pageInfo.areas.forEach(function(area) { %> 
+										<tr><td><a href="<%= area._url %>"><%= area.name %></a></td><td><%= area.zip_start %></td><td><%= area.zip_end %></td></tr>
+									<% }); %>
+									</tbody>
+								</table></div>
+
+								<%- include('../layouts/pagination') %>
+
+								<h2>Qual o CEP de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %>?</h2>
+								<p>O CEP de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %> vai do CEP <%= pageInfo.city.zip_start %> ao <%= pageInfo.city.zip_end %></p>
+								<h2>Qual o Código Postal de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %>?</h2>
+								<p>O Código Postal de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %> vai do CEP <%= pageInfo.city.zip_start %> ao <%= pageInfo.city.zip_end %></p>
+								<h3>Sobre o <%= pageInfo.city.name %></h3>
+								<p>A cidade de <%= pageInfo.city.name %> tem um total de <%= pageInfo.city.area_qty %> bairros, <%= pageInfo.city.address_qty %> endereços/logradouros e <%= pageInfo.city.zip_qty %> CEPs diferentes.</p>
+
+								<p><%- include('../layouts/bottomContent') %></p>
+								
+							</div>
+							<div class="col-3 col-12-small">
+								<h3>Mais Informações</h3>
+								<%- include('../layouts/sidebarContent') %>
+								<div class="table-wrapper"><table class="alt">
+									<tbody>
+										<tr><td><a href="<%= pageInfo.city._url_city_area %>">Bairros de <%= pageInfo.city.name %></a></td><td><%= pageInfo.city.area_qty %></td></tr>
+										<tr><td><a href="<%= pageInfo.city._url_city_address %>">Logradouros de <%= pageInfo.city.name %></a></td><td><%= pageInfo.city.address_qty %></td></tr>
+										<tr><td><a href="<%= pageInfo.city._url_city_zip %>">CEPs de <%= pageInfo.city.name %></a></td><td><%= pageInfo.city.zip_qty %></td></tr>
+									</tbody>
+								</table></div>
+								
+
+							</div>
+						</div>
+<%- include('../layouts/footer') %>

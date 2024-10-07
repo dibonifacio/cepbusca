@@ -1,0 +1,34 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4">Lista das Cidades e seus CEPs <% if (pageInfo.pagination.currentPage > 1) { %> - página <%= pageInfo.pagination.currentPage %><% } %></h1>
+                            <p>Veja a lista de todas as cidades do Brasil, e em cada cidade, tenha seus CEPs, bairros e ruas</p>
+                            <div class="table-wrapper"><table class="table table-bordered table-striped">
+                                <thead><tr><th>Cidade</th><th>Estado</th><th>População</th><th>DDD</th><th>CEP</th></thead>
+                                <tbody>
+                                <% pageInfo.cities.forEach(function(city) { %> 
+                                    <tr><td><a href="<%= city._url %>"><%= city.name %> / <%= city.state_code %></a></td><td><%= city.state_name %></td><td><%= city.population %></td><td>DDD <%= city.ddd %></a></td><td><%= city.zip_start %> a <%= city.zip_end %></td></tr>                                
+                                <% }); %>
+                                </tbody>
+                        </table></div>
+                        <%- include('../layouts/pagination') %>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+                            <div class="mb-4 mt-5">
+
+
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-small">
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+<%- include('../layouts/footer') %>

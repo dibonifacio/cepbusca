@@ -1,0 +1,11 @@
+<% if (pageInfo.pagination.totalPages > 1) { %>
+                                <p>Página <%= pageInfo.pagination.currentPage %> de <%= pageInfo.pagination.totalPages %></p>
+                                  <div class="bs-component"> 
+                                <ul class="pagination">
+                                    <li class="page-item"><a href="<%= pageInfo.pagination.firstPage %>" class="page-link <% if (pageInfo.pagination.currentPage == 1) { %>disabled<% } %>">« Primeiro</a></li>
+                                    <li class="page-item"><a href="<%= pageInfo.pagination.previousPage %>" class="page-link <% if ((pageInfo.pagination.currentPage - 1) < 1) { %>disabled<% } %>">Anterior</a></li>
+                                    <li class="page-item"><a href="<%= pageInfo.pagination.nextPage %>" class="page-link <% if ((pageInfo.pagination.currentPage*1 + 1) > pageInfo.pagination.totalPages) { %>disabled<% } %>">Próxima</a></li>
+                                    <li class="page-item"><a href="<%= pageInfo.pagination.lastPage %>" class="page-link <% if (pageInfo.pagination.currentPage == pageInfo.pagination.totalPages) { %>disabled<% } %>">Último »</a></li>
+                                </ul>
+                                </div>
+<% } %>

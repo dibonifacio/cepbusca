@@ -1,0 +1,15 @@
+<nav aria-label="Breadcrumb">
+    <ul itemscope itemtype="http://schema.org/BreadcrumbList" style="list-style: none; padding: 0; margin: 0; display: flex;">
+        <% pageInfo.breadcrumb.forEach(function(page, index, array) { %> 
+        <% if (index < array.length - 1) { %>
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="display: inline; margin-right: 0px;">
+            <a itemprop="item" href="<%= page.url %>"><span itemprop="name"><%= page.name %></span></a>
+            <meta itemprop="position" content="<%= index %>" /><span style="margin: 0 1px;">/</span>
+        </li>
+        <% } else { %>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="display: inline;">
+                <span itemprop="name"><%= page.name %></span><meta itemprop="position" content="<%= index %>" />
+        </li>
+        <% } }); %>
+    </ul>
+</nav>

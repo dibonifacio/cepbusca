@@ -1,0 +1,50 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+
+							<h2>Qual o CEP dos Bairros de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %>?</h2>
+							<p>O <strong>CEP dos Bairros de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %></strong> vai do CEP <%= pageInfo.city.zip_start %> ao <%= pageInfo.city.zip_end %></p>
+							<h2>Qual o Código Postal dos Bairros de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %>?</h2>
+							<p>O <strong>Código Postal dos Bairros de <%= pageInfo.city.name %> / <%= pageInfo.city.state_code %></strong> vai do CEP <%= pageInfo.city.zip_start %> ao <%= pageInfo.city.zip_end %></p>
+
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Bairro</th><th>CEP Inicial</th><th>CEP Final</th><th>Ruas do Bairro</th></thead>
+								<tbody>
+								<% pageInfo.areas.forEach(function(area) { %> 
+									<tr><td><a href="<%= area._url %>"><%= area.name %></a></td><td><span itemprop="postalCode"><%= area.zip_start %></span></td><td><span itemprop="postalCode"><%= area.zip_end %></span></td><td><%= area.address_qty %></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+
+							<%- include('../layouts/pagination') %>
+
+							<h3>Sobre o <%= pageInfo.city.name %></h3>
+							<p>A cidade de <%= pageInfo.city.name %> tem um total de <%= pageInfo.city.area_qty %> bairros, <%= pageInfo.city.address_qty %> endereços/logradouros e <%= pageInfo.city.zip_qty %> CEPs diferentes.</p>
+
+
+                        </div>
+                        <div class="col-3 col-12-small">
+							<h3>Cidades Próximas</h3><ul>
+								<% pageInfo.cityNear.forEach(function(city) { %> 
+									<li itemscope itemtype="http://schema.org/PostalAddress"><a href="<%= city._url %>" itemprop="url">CEP <span itemprop="addressLocality"><%= city.name %> / <%= city.state_code %></span></a></li>
+								<% }); %>
+								</ul>
+							<h3>Veja Também</h3><ul>
+								<li itemscope itemtype="http://schema.org/PostalAddress"><a href="<%= pageInfo.city._url_state %>" itemprop="url">CEP de <span itemprop="addressRegion"><%= pageInfo.city.state_name %></span></a>
+							</ul>
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>

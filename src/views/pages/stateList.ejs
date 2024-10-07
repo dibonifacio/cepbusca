@@ -1,0 +1,35 @@
+<%- include('../layouts/header') %>
+
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+							<%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %></h1>
+                            <p>Veja a lista de todos os estados do Brasil, e em cada estado, tenha todas suas cidades, seus CEPs, bairros e ruas</p>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>Estado</th><th>CEP Inicial</th><th>CEP Final</th><th>Capital</th></thead>
+								<tbody>
+								<% pageInfo.states.forEach(function(state) { %> 
+									<tr><td><a href="<%= state._url %>"><%= state.name %> / <%= state.state_code %></a></td><td><%= state.zip_start %></td><td><%= state.zip_end %></td><td><%= state.capital %></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+
+                        </div>
+                        <div class="col-3 col-12-small">
+                            <div class="h6 fw-bolder"></div>
+
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>

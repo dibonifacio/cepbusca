@@ -1,0 +1,39 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.title %></h1>
+                            <%- pageInfo.description %>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+                            <div class="mb-4 mt-5">
+                                <div class="small text-muted"><%= pageInfo.post.published_at %></div>
+                                <h3><%= pageInfo.post.title %></h3>
+                                <p></p>
+                                <%- pageInfo.post.content %>
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-small">
+                            <div class="h6 fw-bolder">Categorias</div>
+                            <% pageInfo.categories.forEach(function(category) { %> 
+                                <li><a href="<%= category._url %>"><%= category.name %></a></li>
+                            <% }); %>
+                            <p></p>
+                            <div class="h6 fw-bolder">Datas</div>
+                            <% pageInfo.dates.forEach(function(date) { %> 
+                                <li><a href="<%= date._url %>"><%= date.year %> / <%= date.month %></a></li>
+                            <% }); %>
+                            <p></p>
+                            <div class="h6 fw-bolder">Tags</div>
+                            <% pageInfo.tags.forEach(function(tag) { %> 
+                                <li><a href="<%= tag._url %>"><%= tag.name %></a></li>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </section>
+<%- include('../layouts/footer') %>

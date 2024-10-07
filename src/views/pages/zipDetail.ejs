@@ -1,0 +1,98 @@
+<%- include('../layouts/header') %>
+            <!-- Page Content-->
+            <section class="py-5" id="features">
+                <div class="container-fluid px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-12 col-12-small">
+                            <%- include('../layouts/breadcrumb') %>
+                            <h1 class="fw-bolder fs-5 mb-4"><%= pageInfo.pageTitle %></h1>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-9 col-12-small">
+
+							<% zip = pageInfo.zip %>
+							<p>Veja mais detalhes sobre o <strong>CEP <%= zip.zip %></strong>, que fica na <strong><%= zip.address_name %></strong>, no bairro <%= zip.area_name %> em <%= zip.city_name %> / <%= zip.state_code %></p> 
+							<h2>Onde fica o CEP <%= zip.zip %>?</h2>
+							<p>O <strong>CEP <%= zip.zip %></strong> fica no endereço <strong><%= zip.address_name %></strong>, no bairro <%= zip.area_name %>, que é um dos bairros da cidade <%= zip.city_name %>, do estado de <%= zip.state_name %> (<%= zip.state_code %>). Para um detalhamento de outras informações e estatísticas da cidade de <%= zip.city_name %>, é utilizado uma codificação única de municípios, que é o código IBGE. O <strong>código IBGE de <%= zip.city_name %> é <%= zip.city_id %></strong>. Esta localidade geograficamente está na latitude <%= zip.latitude%> e longitude <%= zip.longitude%></p>
+							<% if (typeof pageInfo.zipIbge !== 'undefined' && pageInfo.zipIbge !== null) { %>
+							<h2>O que tem no CEP <%= zip.zip %>?</h2>
+							<p>Segundo dados do IBGE do Censo de 2022, este <strong>CEP <%= zip.zip %></strong> possui <%= pageInfo.zipIbge.enderecos %> endereços. Ele possui <%= pageInfo.zipIbge.domicilios_particulares %> domicílios particulares, sendo <%= pageInfo.zipIbge.casas %> casas, <%= pageInfo.zipIbge.casas_vila_condominio %> casas de vilas ou de condomínios, <%= pageInfo.zipIbge.apartamentos %> apartamentos e <%= pageInfo.zipIbge.outros_tipos %> de outros tipos. Sobre alguns tipos de estabelecimentos, pode-se listar <%= pageInfo.zipIbge.religioso %> de classficação religioso, <%= pageInfo.zipIbge.saude %> de saúde, <%= pageInfo.zipIbge.ensino %> de ensino, <%= pageInfo.zipIbge.agro %> relativo à agro e <%= pageInfo.zipIbge.outras_finalidades %> de outras finalidades</p>
+							<% } %>
+							<h3>Detalhamento do CEP <%= zip.zip %></h3>
+							<p>Veja abaixo um resumo de informações geográficas do <strong>CEP <%= zip.zip %></strong></p>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								
+								<tbody>
+									<tr><td>CEP</td><td><%= zip.zip %></a></td></tr>
+									<tr><td>Logradouro (detalhe)</td><td><%= zip.address %></a></td></tr>
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>Logradouro</td><td><a href="<%= zip._url_address %>" itemprop="url"><%= zip.address_name %></a></td></tr>
+									<tr><td>Bairro</td><td><a href="<%= zip._url_area %>"><%= zip.area_name %></a></td></tr>
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>Cidade</td><td><a href="<%= zip._url_city %>" itemprop="url"><span itemprop="addressLocality"><%= zip.city_name %> / <%= zip.state_code %></span></a></td></tr>
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td>Estado</td><td><a href="<%= zip._url_state %>" itemprop="url"><%= zip.state_name %> (<%= zip.state_code %>)</a></td></tr>
+									<tr><td>Latitude</td><td><%= zip.latitude %></a></td></tr>
+									<tr><td>Longitude</td><td><%= zip.longitude %></a></td></tr>
+								</tbody>
+							</table></div>
+							<% if (typeof pageInfo.zipIbge !== 'undefined' && pageInfo.zipIbge !== null) { %>
+							<h3>Dados do IBGE sobre o CEP <%= zip.zip %></h3>
+							<p>Veja abaixo dados extraídos do Censo de 2022 do IBGE sobre o <strong>CEP <%= zip.zip %></strong></p>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								
+								<tbody>
+									<tr><td>Código IBGE de <%= zip.city_name %> / <%= zip.state_code %></td><td><%= zip.city_id %></a></td></tr>
+									<tr><td>Endereços</td><td><%= pageInfo.zipIbge.enderecos %></a></td></tr>
+									<tr><td>Domícilios Particulares</td><td><%= pageInfo.zipIbge.domicilios_particulares %></a></td></tr>
+									<tr><td>Casas</td><td><%= pageInfo.zipIbge.casas %></a></td></tr>
+									<tr><td>Casas de Vila ou Condomínio</td><td><%= pageInfo.zipIbge.casas_vila_condominio %></a></td></tr>
+									<tr><td>Apartamentos</td><td><%= pageInfo.zipIbge.apartamentos %></a></td></tr>
+									<tr><td>Domicílios de outros tipos</td><td><%= pageInfo.zipIbge.outros_tipos %></a></td></tr>
+									<tr><td>Estabelecimentos de Ensino</td><td><%= pageInfo.zipIbge.ensino %></a></td></tr>
+									<tr><td>Estabelecimentos Religiosos</td><td><%= pageInfo.zipIbge.religioso %></a></td></tr>
+									<tr><td>Estabelecimentos de Saúde</td><td><%= pageInfo.zipIbge.saude %></a></td></tr>
+									<tr><td>Estabelecimentos de Agro</td><td><%= pageInfo.zipIbge.agro %></a></td></tr>
+									<tr><td>Estabelecimentos de Outros Tipos</td><td><%= pageInfo.zipIbge.outras_finalidades %></a></td></tr>
+								</tbody>
+							</table></div>
+							<% } %>
+							<% if (pageInfo.zipsSameAddress.length > 1) { %>
+							<h2>Outros CEPs do mesmo logradouro <%= zip.address_name %></h2>
+							<p>Este CEP <%= zip.zip %> aparece junto com outros <%= pageInfo.zipsSameAddress.length %> CEPs neste mesmo logradouro. Veja todos os <a href="<%= zip._url_area %>"><%= pageInfo.zipsSameAddress.length %> CEPs de <%= zip.address_name %></a></p>
+							<div class="table-wrapper"><table class="table table-bordered table-striped">
+								<thead><tr><th>CEP</th><th>Logradouro</th><th>Bairro</th><th>Cidade</th></thead>
+								<tbody>
+								<% pageInfo.zipsSameAddress.forEach(function(zip) { %> 
+									<tr itemscope itemtype="http://schema.org/PostalAddress"><td><a href="<%= zip._url %>" itemprop="url"><span itemprop="postalCode"><%= zip.zip %></span></a></td><td><span itemprop="streetAddress"><%= zip.address %></span></td><td><%= zip.area_name %></td><td><span itemprop="addressLocality"><%= zip.city_name %> / <%= zip.state %></span></td></tr>
+								<% }); %>
+								</tbody>
+							</table></div>
+							<% } %>
+							<h2>Onde fica o Código Postal <%= zip.zip %>?</h2>
+							<p>O <strong>Código Postal <%= zip.zip %></strong> fica em <strong><%= zip.address_name %></strong>, <%= zip.area_name %>, na cidade <%= zip.city_name %> e no estado de <%= zip.state_name %> (<%= zip.state_code %>). Esta localidade geograficamente está na latitude <%= zip.latitude%> e longitude <%= zip.longitude%></p>
+							<h2>CEPs próximos ao CEP <%= zip.zip %></h2>
+							<p><%- pageInfo.contentNearZip %></p>
+							<h2>Qual o DDD do CEP <%= zip.zip %>?</h2>
+							<p>Por estar na cidade de <%= zip.city_name %> / <%= zip.state_code %>, o <Strong>CEP <%= zip.zip %></Strong> tem o mesmo DDD de toda a cidade, que é o DDD <%= pageInfo.city.ddd %>. Portanto, para ligar para qualquer número de telefone registrado em qualquer endereço deste CEP, caso esteja em outra cidade, você deve usar o DDD <%= pageInfo.city.ddd %> discando 0 + código da operadora + <%= pageInfo.city.ddd %> (DDD) + número do telefone. Esta regra serve tanto para ligações de telefone fixo quanto de celulares</p>
+
+                        </div>
+                        <div class="col-3 col-12-small">
+							<h3>CEPs Próximos</h3>
+							<ul>
+								<% pageInfo.zipNear.forEach(function(zip) { %> 
+								<li><a href="<%= zip._url %>">CEP <span itemprop="postalCode"><%= zip.zip %></span></a></li>
+								<% }); %>
+							</ul>
+							<h3>Veja Também</h3>
+							<ul>
+								<li><a href="<%= zip._url_address %>">CEPs <%= zip.address_name %></a></li>
+								<li><a href="<%= zip._url_area %>">CEPs <%= zip.area_name %></a></li>
+								<li><a href="<%= zip._url_city %>">CEPs <%= zip.city_name %> / <%= zip.state_code %></a></li>
+								<li><a href="<%= zip._url_state %>">CEPs <%= zip.state_name %> (<%= zip.state_code %>)</a></li>
+							</ul>
+							
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<%- include('../layouts/footer') %>
