@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.distanciacidade.com.br/sitemap.xml
+Sitemap: https://www.cepbusca.com.br/sitemap.xml

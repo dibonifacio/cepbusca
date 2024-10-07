@@ -57,9 +57,9 @@ async function sendUrlsToIndexNow(urls) {
   const apiKey = '0a798bd95f244dd1ac3f4436ebde37ce'; // Substitua pela sua chave API do IndexNow
 
   const requestData = {
-    host: 'www.distanciacidade.com.br',
+    host: 'www.cepbusca.com.br',
     key: apiKey,
-    keyLocation: 'https://www.distanciacidade.com.br/0a798bd95f244dd1ac3f4436ebde37ce.txt',
+    keyLocation: 'https://www.cepbusca.com.br/0a798bd95f244dd1ac3f4436ebde37ce.txt',
     urlList: urls,
   };
 

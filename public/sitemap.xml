@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/assets/css/dbcorp-sitemap.xsl" ?>
     <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <sitemap>
-            <loc>https://www.distanciacidade.com.br/sitemap/sitemap-cidades.xml</loc>
+            <loc>https://www.cepbusca.com.br/sitemap/sitemap-cidades.xml</loc>
             <lastmod>2024-10-02T17:58:24.820Z</lastmod>
         </sitemap>
         <sitemap>
-            <loc>https://www.distanciacidade.com.br/sitemap/sitemap-content.xml</loc>
+            <loc>https://www.cepbusca.com.br/sitemap/sitemap-content.xml</loc>
             <lastmod>2024-10-02T17:58:24.820Z</lastmod>
         </sitemap>        
 </sitemapindex>
