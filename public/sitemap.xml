@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/assets/css/dbcorp-sitemap.xsl" ?>
-    <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <sitemap>
-            <loc>https://www.cepbusca.com.br/sitemap/sitemap-cidades.xml</loc>
-            <lastmod>2024-10-02T17:58:24.820Z</lastmod>
-        </sitemap>
-        <sitemap>
-            <loc>https://www.cepbusca.com.br/sitemap/sitemap-content.xml</loc>
-            <lastmod>2024-10-02T17:58:24.820Z</lastmod>
-        </sitemap>        
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://www.cepbusca.com.br/sitemap/state-sitemap.xml</loc>
+        <lastmod>2024-08-20T13:36:20.282Z</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.cepbusca.com.br/sitemap/city-sitemap.xml</loc>
+        <lastmod>2024-08-20T13:36:20.282Z</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.cepbusca.com.br/sitemap/area-sitemap.xml</loc>
+        <lastmod>2024-08-20T13:36:20.282Z</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.cepbusca.com.br/sitemap/address-sitemap.xml</loc>
+        <lastmod>2024-08-20T13:36:20.282Z</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.cepbusca.com.br/sitemap/zip-sitemap.xml</loc>
+        <lastmod>2024-08-20T13:36:20.282Z</lastmod>
+    </sitemap>     
 </sitemapindex>
