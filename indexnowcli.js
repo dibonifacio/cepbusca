@@ -54,12 +54,12 @@ function parseSitemapFile(filePath) {
 
 // Função para enviar URLs para o IndexNow
 async function sendUrlsToIndexNow(urls) {
-  const apiKey = '0a798bd95f244dd1ac3f4436ebde37ce'; // Substitua pela sua chave API do IndexNow
+  const apiKey = 'c71fe8f5bf794640bec7a4ac94caff7a'; // Substitua pela sua chave API do IndexNow
 
   const requestData = {
     host: 'www.cepbusca.com.br',
     key: apiKey,
-    keyLocation: 'https://www.cepbusca.com.br/0a798bd95f244dd1ac3f4436ebde37ce.txt',
+    keyLocation: 'https://www.cepbusca.com.br/c71fe8f5bf794640bec7a4ac94caff7a.txt',
     urlList: urls,
   };
 
@@ -95,5 +95,5 @@ async function processSitemaps(sitemapDirectory) {
 }
 
 // Caminho para o diretório onde os arquivos de sitemap estão armazenados
-const sitemapDirectory = './public/sitemap'; // Ajuste para o caminho do seu diretório de sitemaps
+const sitemapDirectory = './public/sitemap/indexnow'; // Ajuste para o caminho do seu diretório de sitemaps
 processSitemaps(sitemapDirectory);
