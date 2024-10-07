@@ -60,7 +60,7 @@ async function generateSitemap() {
 
 async function generateSitemapIndex(sitemapFileName, sitemapFileUrl, itensQty) {
     const pageSize = process.env.PAGE_SIZE_SITEMAP || 5000;
-    const baseUrl = "https://www.cepbusca.com.br/sitemap";
+    const baseUrl = "https://www.cepbusca.com.br/sitemap/";
     console.log('');
     console.log('Index: ' + sitemapFileName);
     let xmlSitemapHeader = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/assets/css/dbcorp-sitemap.xsl" ?>';
@@ -86,7 +86,7 @@ async function generateSitemapIndex(sitemapFileName, sitemapFileUrl, itensQty) {
 
 async function generateSitemapUrls(sitemapType, sitemapBaseFileName, model, itensQty) {
     const pageSize = process.env.PAGE_SIZE_SITEMAP || 5000;
-    const baseUrl = "https://www.cepsdobrasil.com.br";
+    const baseUrl = "https://www.cepbusca.com.br";
     console.log('Loc: ' + sitemapType);
     let xmlSitemapHeader = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/assets/css/dbcorp-sitemap.xsl" ?>';
     xmlSitemapHeader = xmlSitemapHeader + `
