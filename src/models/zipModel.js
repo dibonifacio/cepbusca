@@ -11,6 +11,18 @@ async function getAllZip(page, pageSize) {
   return await db.runSqlMany(sql, params);
 };
 
+async function getAllZipSitemap(page, pageSize) {
+  const pageSizeN = Number(pageSize);
+  const offset = (page - 1) * pageSize;
+  const sql = `SELECT id, zip, slug_full, address, address_name, address_slug, city_name, city_slug, state_name, state_code, state_slug 
+               FROM zip
+               ORDER BY zip DESC
+               LIMIT ? OFFSET ?`;
+  const params = [pageSizeN, offset];
+  return await db.runSqlMany(sql, params);
+};
+
+
 async function getAllZipCount() {
   const sql = 'SELECT count(*) as qty FROM zip'; 
   const params = [];
@@ -92,6 +104,7 @@ async function getZipIbge(zip) {
 // Exportação default das funções como um objeto
 export default {
   getAllZip,
+  getAllZipSitemap,
   getAllZipCount,
   getNearZip,
   getZipByCity,
