@@ -233,16 +233,19 @@ async function cityDetailArea(slug, page, pageSize) {
 }
 
 function getNearestCities(city, citiesNear) {
-    let html = '<p>A cidade mais próxima de ' + city.name + ' é ' + citiesNear[0].name + ', com uma população total de ' + citiesNear[0].population + ' habitantes e CEP de ' + citiesNear[0].zip_start + ' a ' + citiesNear[0].zip_end + '. ' + citiesNear[1].name + ' é a segunda cidade mais próxima de ' + city.name + ' com CEPs de ' + citiesNear[1].zip_start + ' e ' + citiesNear[1].zip_end + '</p>';
-    html = html + '<p>Completando a lista das 10 cidades mais próximas de ' + city.name + ' temos ainda ';
-    html = html + citiesNear[2].name + ', com uma população total de ' + citiesNear[2].population + ' habitantes e CEP de ' + citiesNear[2].zip_start + ' a ' + citiesNear[2].zip_end + ' e ';
-    html = html + citiesNear[3].name + ', com ' + citiesNear[3].population + ' habitantes na quarta posição e CEP de ' + citiesNear[3].zip_start + ' a ' + citiesNear[3].zip_end + '. ';
-    html = html + citiesNear[4].name + ' em quinto lugar com uma população total de ' + citiesNear[4].population + ' habitantes e CEP de ' + citiesNear[4].zip_start + ' a ' + citiesNear[4].zip_end + ', ';
-    html = html + citiesNear[5].name + ', em sexto com ' + citiesNear[5].population + ' habitantes e CEP de ' + citiesNear[5].zip_start + ' a ' + citiesNear[5].zip_end + ', ';
-    html = html + citiesNear[6].name + ' que tem CEP de ' + citiesNear[6].zip_start + ' a ' + citiesNear[6].zip_end + ' e uma população total de ' + citiesNear[6].population + ' habitantes. </p>';
-    html = html + '<p>Em oitavo lugar vem ' + citiesNear[7].name + ', com uma população total de ' + citiesNear[7].population + ' habitantes e CEP de ' + citiesNear[7].zip_start + ' a ' + citiesNear[7].zip_end + ', ';
-    html = html + citiesNear[8].name + ', com uma população total de ' + citiesNear[8].population + ' habitantes e CEP de ' + citiesNear[8].zip_start + ' a ' + citiesNear[8].zip_end + ' e ';
-    html = html + citiesNear[9].name + ', com  ' + citiesNear[9].population + ' habitantes e CEP de ' + citiesNear[9].zip_start + ' a ' + citiesNear[9].zip_end + '. ';
+    let html = '';
+    if (citiesNear.length == 10) {
+        html = '<p>A cidade mais próxima de ' + city.name + ' é ' + citiesNear[0].name + ', com uma população total de ' + citiesNear[0].population + ' habitantes e CEP de ' + citiesNear[0].zip_start + ' a ' + citiesNear[0].zip_end + '. ' + citiesNear[1].name + ' é a segunda cidade mais próxima de ' + city.name + ' com CEPs de ' + citiesNear[1].zip_start + ' e ' + citiesNear[1].zip_end + '</p>';
+        html = html + '<p>Completando a lista das 10 cidades mais próximas de ' + city.name + ' temos ainda ';
+        html = html + citiesNear[2].name + ', com uma população total de ' + citiesNear[2].population + ' habitantes e CEP de ' + citiesNear[2].zip_start + ' a ' + citiesNear[2].zip_end + ' e ';
+        html = html + citiesNear[3].name + ', com ' + citiesNear[3].population + ' habitantes na quarta posição e CEP de ' + citiesNear[3].zip_start + ' a ' + citiesNear[3].zip_end + '. ';
+        html = html + citiesNear[4].name + ' em quinto lugar com uma população total de ' + citiesNear[4].population + ' habitantes e CEP de ' + citiesNear[4].zip_start + ' a ' + citiesNear[4].zip_end + ', ';
+        html = html + citiesNear[5].name + ', em sexto com ' + citiesNear[5].population + ' habitantes e CEP de ' + citiesNear[5].zip_start + ' a ' + citiesNear[5].zip_end + ', ';
+        html = html + citiesNear[6].name + ' que tem CEP de ' + citiesNear[6].zip_start + ' a ' + citiesNear[6].zip_end + ' e uma população total de ' + citiesNear[6].population + ' habitantes. </p>';
+        html = html + '<p>Em oitavo lugar vem ' + citiesNear[7].name + ', com uma população total de ' + citiesNear[7].population + ' habitantes e CEP de ' + citiesNear[7].zip_start + ' a ' + citiesNear[7].zip_end + ', ';
+        html = html + citiesNear[8].name + ', com uma população total de ' + citiesNear[8].population + ' habitantes e CEP de ' + citiesNear[8].zip_start + ' a ' + citiesNear[8].zip_end + ' e ';
+        html = html + citiesNear[9].name + ', com  ' + citiesNear[9].population + ' habitantes e CEP de ' + citiesNear[9].zip_start + ' a ' + citiesNear[9].zip_end + '. ';
+    }
     return html;
 }
 

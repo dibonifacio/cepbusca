@@ -339,16 +339,19 @@ async function stateDetailZip(slug, page, pageSize) {
 }
 
 function getBiggestCities(state, citiesPopulation) {
-    let html = '<p>A maior cidade de ' + state.name + ' é ' + citiesPopulation[0].name + ', com uma população total de ' + citiesPopulation[0].population + ' habitantes e CEP de ' + citiesPopulation[0].zip_start + ' a ' + citiesPopulation[0].zip_end + '. ' + citiesPopulation[1].name + ' é a segunda maior cidade do estado de ' + state.name + ' com CEPs de ' + citiesPopulation[1].zip_start + ' e ' + citiesPopulation[1].zip_end + '</p>';
-    html = html + '<p>Completando a lista das 10 maiores cidades de ' + state.name + ' temos ainda ';
-    html = html + citiesPopulation[2].name + ', com uma população total de ' + citiesPopulation[2].population + ' habitantes e CEP de ' + citiesPopulation[2].zip_start + ' a ' + citiesPopulation[2].zip_end + ' e ';
-    html = html + citiesPopulation[3].name + ', com ' + citiesPopulation[3].population + ' habitantes na quarta posição e CEP de ' + citiesPopulation[3].zip_start + ' a ' + citiesPopulation[3].zip_end + '. ';
-    html = html + citiesPopulation[4].name + ' em quinto lugar com uma população total de ' + citiesPopulation[4].population + ' habitantes e CEP de ' + citiesPopulation[4].zip_start + ' a ' + citiesPopulation[4].zip_end + ', ';
-    html = html + citiesPopulation[5].name + ', em sexto com ' + citiesPopulation[5].population + ' habitantes e CEP de ' + citiesPopulation[5].zip_start + ' a ' + citiesPopulation[5].zip_end + ', ';
-    html = html + citiesPopulation[6].name + ' que tem CEP de ' + citiesPopulation[6].zip_start + ' a ' + citiesPopulation[6].zip_end + ' e uma população total de ' + citiesPopulation[6].population + ' habitantes. </p>';
-    html = html + '<p>Em oitavo lugar vem ' + citiesPopulation[7].name + ', com uma população total de ' + citiesPopulation[7].population + ' habitantes e CEP de ' + citiesPopulation[7].zip_start + ' a ' + citiesPopulation[7].zip_end + ', ';
-    html = html + citiesPopulation[8].name + ', com uma população total de ' + citiesPopulation[8].population + ' habitantes e CEP de ' + citiesPopulation[8].zip_start + ' a ' + citiesPopulation[8].zip_end + ' e ';
-    html = html + citiesPopulation[9].name + ', com  ' + citiesPopulation[9].population + ' habitantes e CEP de ' + citiesPopulation[9].zip_start + ' a ' + citiesPopulation[9].zip_end + '. ';
+    let html = '';
+    if (citiesPopulation.length == 10) {
+        html = '<p>A maior cidade de ' + state.name + ' é ' + citiesPopulation[0].name + ', com uma população total de ' + citiesPopulation[0].population + ' habitantes e CEP de ' + citiesPopulation[0].zip_start + ' a ' + citiesPopulation[0].zip_end + '. ' + citiesPopulation[1].name + ' é a segunda maior cidade do estado de ' + state.name + ' com CEPs de ' + citiesPopulation[1].zip_start + ' e ' + citiesPopulation[1].zip_end + '</p>';
+        html = html + '<p>Completando a lista das 10 maiores cidades de ' + state.name + ' temos ainda ';
+        html = html + citiesPopulation[2].name + ', com uma população total de ' + citiesPopulation[2].population + ' habitantes e CEP de ' + citiesPopulation[2].zip_start + ' a ' + citiesPopulation[2].zip_end + ' e ';
+        html = html + citiesPopulation[3].name + ', com ' + citiesPopulation[3].population + ' habitantes na quarta posição e CEP de ' + citiesPopulation[3].zip_start + ' a ' + citiesPopulation[3].zip_end + '. ';
+        html = html + citiesPopulation[4].name + ' em quinto lugar com uma população total de ' + citiesPopulation[4].population + ' habitantes e CEP de ' + citiesPopulation[4].zip_start + ' a ' + citiesPopulation[4].zip_end + ', ';
+        html = html + citiesPopulation[5].name + ', em sexto com ' + citiesPopulation[5].population + ' habitantes e CEP de ' + citiesPopulation[5].zip_start + ' a ' + citiesPopulation[5].zip_end + ', ';
+        html = html + citiesPopulation[6].name + ' que tem CEP de ' + citiesPopulation[6].zip_start + ' a ' + citiesPopulation[6].zip_end + ' e uma população total de ' + citiesPopulation[6].population + ' habitantes. </p>';
+        html = html + '<p>Em oitavo lugar vem ' + citiesPopulation[7].name + ', com uma população total de ' + citiesPopulation[7].population + ' habitantes e CEP de ' + citiesPopulation[7].zip_start + ' a ' + citiesPopulation[7].zip_end + ', ';
+        html = html + citiesPopulation[8].name + ', com uma população total de ' + citiesPopulation[8].population + ' habitantes e CEP de ' + citiesPopulation[8].zip_start + ' a ' + citiesPopulation[8].zip_end + ' e ';
+        html = html + citiesPopulation[9].name + ', com  ' + citiesPopulation[9].population + ' habitantes e CEP de ' + citiesPopulation[9].zip_start + ' a ' + citiesPopulation[9].zip_end + '. ';
+    }
     return html;
 }
 
